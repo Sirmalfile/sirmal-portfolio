@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import StarsBackground from './StarsBackground';
 import backgroundVideo from '../assets/cards-video.webm';
 
@@ -15,6 +15,7 @@ import cppImg from '../assets/9.png';
 import javaImg from '../assets/4.png';
 
 const Skills = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const skills = [
     { name: 'HTML', img: htmlImg },
     { name: 'CSS', img: cssImg },
@@ -32,7 +33,27 @@ const Skills = () => {
   const animationRef = useRef(null);
   let angle = 0;
 
+  // Check if mobile on mount and resize
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  // Orbit animation only on desktop
+  useEffect(() => {
+    if (isMobile) return;
+
     const orbitAnimation = () => {
       if (orbitRef.current) {
         angle += 0.002;
@@ -58,7 +79,7 @@ const Skills = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section id="skills" className="skills-section">
@@ -79,37 +100,42 @@ const Skills = () => {
       <div className="skills-container">
         <h1 className="skills-main-title"><span>My Skills</span></h1>
         
-        {/* Circular Orbit Animation */}
-        <div className="skills-orbit-container">
-          <div ref={orbitRef} className="skills-orbit">
+        {/* Circular Orbit Animation - Hidden on mobile */}
+        {!isMobile && (
+          <div className="skills-orbit-container">
+            <div ref={orbitRef} className="skills-orbit">
+              {skills.map((skill, index) => (
+                <div key={index} className="orbiting-skill">
+                  <img 
+                    src={skill.img} 
+                    alt={skill.name}
+                    className="skill-image" 
+                    title={skill.name}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {/* Grid for mobile */}
+        {isMobile && (
+          <div className="skills-grid">
             {skills.map((skill, index) => (
-              <div key={index} className="orbiting-skill">
-                <img 
-                  src={skill.img} 
-                  alt={skill.name}
-                  className="skill-image" 
-                  title={skill.name}
-                />
+              <div key={index} className="skill-card">
+                <div className="skill-image-container">
+                  <img 
+                    src={skill.img} 
+                    alt={skill.name} 
+                    className="skill-image"
+                    title={skill.name}
+                  />
+                </div>
+                <p>{skill.name}</p>
               </div>
             ))}
           </div>
-        </div>
-        
-        {/* Original Grid (commented out but kept as fallback) */}
-        {/* <div className="skills-grid">
-          {skills.map((skill, index) => (
-            <div key={index} className="skill-card">
-              <div className="skill-image-container">
-                <img 
-                  src={skill.img} 
-                  alt={skill.name} 
-                  className="skill-image"
-                  title={skill.name}
-                />
-              </div>
-            </div>
-          ))}
-        </div> */}
+        )}
       </div>
     </section>
   );

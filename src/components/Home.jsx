@@ -1,3 +1,4 @@
+// Home.jsx
 import React from 'react';
 import StarsBackground from './StarsBackground';
 import coderImage from '../assets/sirmal.jpeg';

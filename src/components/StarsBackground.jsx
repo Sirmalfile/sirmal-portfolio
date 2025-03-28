@@ -1,3 +1,4 @@
+// StarsBackground.jsx
 import { useRef, useEffect } from 'react'
 import * as THREE from 'three'
 
@@ -28,32 +29,32 @@ const StarsBackground = ({ id }) => {
 
     // Create stars
     const starGeometry = new THREE.BufferGeometry()
-    const starCount = window.innerWidth < 768 ? 2000 : 5000
+    const starCount = window.innerWidth < 768 ? 1000 : 3000 // Reduced count for mobile
     const positions = new Float32Array(starCount * 3)
 
     for (let i = 0; i < starCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 2
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 2
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 2
+      positions[i * 3] = (Math.random() - 0.5) * 2000
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 2000
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 2000
     }
 
     starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     const starMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: window.innerWidth < 768 ? 0.02 : 0.003,
+      size: window.innerWidth < 768 ? 0.5 : 0.2, // Adjusted size for mobile
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.8,
     })
 
     const stars = new THREE.Points(starGeometry, starMaterial)
     scene.add(stars)
-    camera.position.z = window.innerWidth < 768 ? 6 : 1
+    camera.position.z = 1
 
     // Animation
     const animate = () => {
       requestAnimationFrame(animate)
-      stars.rotation.x += 0.001
-      stars.rotation.y += 0.001
+      stars.rotation.x += 0.0005 // Slower rotation for mobile
+      stars.rotation.y += 0.0005
       renderer.render(scene, camera)
     }
 
