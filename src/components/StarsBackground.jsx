@@ -33,9 +33,9 @@ const StarsBackground = ({ id }) => {
     const positions = new Float32Array(starCount * 3)
 
     for (let i = 0; i < starCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 2000
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 2000
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 2000
+      positions[i * 3] = (Math.random() - 0.5) * 200
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 200
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 200
     }
 
     starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
@@ -53,8 +53,8 @@ const StarsBackground = ({ id }) => {
     // Animation
     const animate = () => {
       requestAnimationFrame(animate)
-      stars.rotation.x += 0.0005 // Slower rotation for mobile
-      stars.rotation.y += 0.0005
+      stars.rotation.x += 0.001 // Slower rotation for mobile
+      stars.rotation.y += 0.001
       renderer.render(scene, camera)
     }
 
