@@ -4,15 +4,15 @@ import backgroundVideo from '../assets/cards-video.webm';
 
 // Import skill images
 import htmlImg from '../assets/1.png';
-import cssImg from '../assets/2.png';
-import jsImg from '../assets/3.png';
-import reactImg from '../assets/4.png';
-import nodeImg from '../assets/5.png';
-import mongoImg from '../assets/6.png';
-import mysqlImg from '../assets/7.png';
-import cImg from '../assets/8.png';
-import cppImg from '../assets/9.png';
-import javaImg from '../assets/4.png';
+import cssImg from '../assets/6.png';
+import jsImg from '../assets/2.png';
+// import reactImg from '../assets/4.png';
+// // import nodeImg from '../assets/5.png';
+ import pythonImg from '../assets/python.webp';
+// import mysqlImg from '../assets/7.png';
+import cImg from '../assets/c.jpg';
+import cppImg from '../assets/c++.webp';
+import javaImg from '../assets/java.jpg';
 
 const Skills = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -20,10 +20,10 @@ const Skills = () => {
     { name: 'HTML', img: htmlImg },
     { name: 'CSS', img: cssImg },
     { name: 'JavaScript', img: jsImg },
-    { name: 'React', img: reactImg },
-    { name: 'Node.js', img: nodeImg },
-    { name: 'MongoDB', img: mongoImg },
-    { name: 'MySQL', img: mysqlImg },
+    // { name: 'React', img: reactImg },
+    // { name: 'Node.js', img: nodeImg },
+    { name: 'python', img: pythonImg },
+    // { name: 'MySQL', img: mysqlImg },
     { name: 'C', img: cImg },
     { name: 'C++', img: cppImg },
     { name: 'Java', img: javaImg }
