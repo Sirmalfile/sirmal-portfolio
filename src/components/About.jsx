@@ -15,9 +15,7 @@ const About = () => {
           <h2>Bharat Sirmal</h2>
           <div className="divider"></div>
           <p>
-            A Computer Engineering graduate passionate about Front-End Development. 
-            I focus on creating engaging digital experiences and always strive to 
-            deliver the best solutions in every project.
+           A passionate and dedicated B.Tech Computer Engineering student with a strong foundation in Programming language(c programming, c++, html, css, javascript, python, etc), problem-solving, and innovation. Throughout my academic journey, I have developed an interest in various fields such as coding, algorithms.
           </p>
           <div className="about-buttons">
             <a href={cvFile} download className="download-btn">
