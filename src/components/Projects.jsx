@@ -1,8 +1,29 @@
 import React from 'react';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import StarsBackground from './StarsBackground';
-import projectVideo from '../assets/encryption.webm'; // Your project video
+import projectVideo from '../assets/encryption.webm';
+import divbackground from '../assets/tae.jpeg';
 
 const Projects = () => {
+  const projects = [
+    {
+      title: "Tic-Tac-Toe Game",
+      description: "A fun interactive game built with HTML, CSS AND JAVASCRIPT",
+      image: divbackground,
+      projectLink: "https://tictactoe-game-tawny.vercel.app/",
+      sourceCodeLink: "https://github.com/Sirmalfile/tictactoe",
+      isSpecial: true
+    },
+    {
+      title: "Coming Soon-2",
+      // image: divbackground
+    },
+    {
+      title: "Coming Soon-3",
+      // image: divbackground
+    }
+  ];
+
   return (
     <section id="project" className="project-section">
       {/* Video Background */}
@@ -22,11 +43,30 @@ const Projects = () => {
       <div className="project-container">
         <h2 className="project-main-title">My Projects</h2>
         <div className="project-grid">
-          {['Coming Soon-1', 'Coming Soon-2', 'Coming Soon-3'].map((title, index) => (
-            <div key={index} className="project-card">
+          {projects.map((project, index) => (
+            <div key={index} className={`project-card ${project.isSpecial ? 'special-card' : ''}`}>
               <div className="project-card-content">
-                <h4>{title}</h4>
-                <div className="project-placeholder"></div>
+                <div className="project-image-container">
+                  {project.image && (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="project-image"
+                    />
+                  )}
+                </div>
+                <h4 className="project-title">{project.title}</h4>
+                {project.description && <p className="project-description">{project.description}</p>}
+                {project.isSpecial && (
+                  <div className="project-links">
+                    <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                      <FaExternalLinkAlt /> Live Demo
+                    </a>
+                    <a href={project.sourceCodeLink} target="_blank" rel="noopener noreferrer" className="project-link">
+                      <FaGithub /> Source Code
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           ))}
