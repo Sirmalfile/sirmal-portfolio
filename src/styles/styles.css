@@ -831,6 +831,7 @@ span {
 
 /* ===== CONTENT CONTAINER ===== */
 .contact-container {
+  margin-top: 4rem;
   max-width: 600px;
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
@@ -1223,6 +1224,7 @@ textarea {
 
   /* Contact section */
   .contact-container {
+    margin-top: 4rem;
     padding: 1.5rem;
   }
 

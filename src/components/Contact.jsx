@@ -53,8 +53,8 @@ const Contact = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-    if (formData.phone && !/^\d{3}-\d{3}-\d{4}$/.test(formData.phone)) {
-      newErrors.phone = 'Please use format: 123-456-7890';
+    if (formData.phone && !/^\d{3}\d{3}\d{4}$/.test(formData.phone)) {
+      newErrors.phone = 'Please use format: 1234567890';
     }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     
@@ -118,7 +118,7 @@ const Contact = () => {
               <div className="form-group">
                 <label htmlFor="phone">Phone Number <span className="optional">(optional)</span></label>
                 <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" className={errors.phone ? 'error' : ''} />
-                <small className="hint">Format: 123-456-7890</small>
+                <small className="hint">Format: 1234567890</small>
                 {errors.phone && <span className="error-message">{errors.phone}</span>}
               </div>
               
