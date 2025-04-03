@@ -41,7 +41,7 @@ const Projects = () => {
       
       {/* Content */}
       <div className="project-container">
-        <h2 className="project-main-title">My Projects</h2>
+        <h2 className="project-main-title"><span>My Projects</span></h2>
         <div className="project-grid">
           {projects.map((project, index) => (
             <div key={index} className={`project-card ${project.isSpecial ? 'special-card' : ''}`}>

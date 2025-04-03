@@ -66,16 +66,35 @@ const Contact = () => {
     e.preventDefault();
     if (!validateForm()) return;
     setIsSubmitting(true);
+    
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', {
-        ...formData,
-        photo: formData.photo ? formData.photo.name : 'No file'
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone || '');
+      formDataToSend.append('message', formData.message);
+      
+      if (formData.photo) {
+        formDataToSend.append('photo', formData.photo);
+      }
+  
+      const response = await fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        body: formDataToSend,
+        // Don't set Content-Type header - the browser will do it automatically
       });
+  
+      const responseData = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(responseData.error || 'Failed to submit form');
+      }
+  
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', phone: '', message: '', photo: null });
     } catch (error) {
       console.error('Submission error:', error);
+      alert(`Error: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
