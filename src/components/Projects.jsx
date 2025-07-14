@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import StarsBackground from './StarsBackground';
 import projectVideo from '../assets/encryption.webm';
 import divbackground from '../assets/tae.jpeg';
 import divbackgrounds from'../assets/Ai.png';

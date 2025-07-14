@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import StarsBackground from './StarsBackground';
 import { useState } from 'react';
 
 const Contact = () => {
@@ -67,13 +66,9 @@ const Contact = () => {
     if (!validateForm()) return;
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', {
-        ...formData,
-        photo: formData.photo ? formData.photo.name : 'No file'
-      });
+     
       setSubmitSuccess(true);
-      setFormData({ name: '', email: '', phone: '', message: '', photo: null });
+      setFormData({ name: '', email: '', phone: '', message: '' });
     } catch (error) {
       console.error('Submission error:', error);
     } finally {

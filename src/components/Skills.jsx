@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import StarsBackground from './StarsBackground';
+
 import backgroundVideo from '../assets/cards-video.webm';
 
 // Import skill images

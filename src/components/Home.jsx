@@ -1,7 +1,6 @@
 // Home.jsx
 import React from 'react';
 import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
-import StarsBackground from './StarsBackground';
 import coderImage from '../assets/sirmal.jpg';
 import { Link } from "react-router-dom";
 

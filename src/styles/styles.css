@@ -1403,11 +1403,9 @@ textarea {
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .project-card {
     padding: 1.5rem;
   }
-
   /* Contact section */
   .contact-container {
     margin-top: 7rem;
@@ -1433,23 +1431,15 @@ textarea {
   .intro-div p {
     font-size: 1rem;
   }
-
-  .intro-div h3 span {
-    font-size: 1.8rem;
-  }
-
   .about-text h1 {
     font-size: 2rem;
   }
-
   .about-text h2 {
     font-size: 2.5rem;
   }
-
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
   .project-grid {
     grid-template-columns: 1fr;
   }
@@ -1477,34 +1467,27 @@ textarea {
   .intro-div h1 {
     font-size: 2rem;
   }
-
   .intro-div h1 span {
     font-size: 2rem;
   }
-
   .intro-div h3 {
     font-size: 1.5rem;
   }
-
   .intro-div h3 span {
     font-size: 1.5rem;
   }
-
   .home-image img {
     width: 200px;
     height: 200px;
   }
-
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-
   .skill-card {
     max-width: 150px;
     margin: 0 auto;
   }
-
   .link-btn {
     width: 100%;
     max-width: none;
