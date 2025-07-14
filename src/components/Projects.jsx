@@ -3,6 +3,7 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import StarsBackground from './StarsBackground';
 import projectVideo from '../assets/encryption.webm';
 import divbackground from '../assets/tae.jpeg';
+import divbackgrounds from'../assets/Ai.png';
 
 const Projects = () => {
   const projects = [
@@ -15,8 +16,12 @@ const Projects = () => {
       isSpecial: true
     },
     {
-      title: "Coming Soon-2",
-      // image: divbackground
+      title: "DtxKzy-Ai",
+      description: "An interactive AI ChatBot built with React, Tailwind CSS, and Firebase",
+      image: divbackgrounds,
+      projectLink: "https://dtx-kzy-ai-chat-boat-eh5f.vercel.app/",
+      sourceCodeLink: "https://github.com/Sirmalfile/DtxKzy-AI-ChatBoat.git",
+      isSpecial: true
     },
     {
       title: "Coming Soon-3",
@@ -36,12 +41,12 @@ const Projects = () => {
       </div>
 
       {/* Stars Background */}
-      <StarsBackground id="project-star-canvas" />
+      {/* <StarsBackground id="project-star-canvas" /> */}
       <div className="home-gradient-overlay"></div>
       
       {/* Content */}
       <div className="project-container">
-        <h2 className="project-main-title"><span>My Projects</span></h2>
+        <h2 className="project-main-title"><span>Projects</span></h2>
         <div className="project-grid">
           {projects.map((project, index) => (
             <div key={index} className={`project-card ${project.isSpecial ? 'special-card' : ''}`}>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom"; // Add this import
 import StarsBackground from './StarsBackground';
-import profileImage from '../assets/bharat.jpeg'; // Replace with your image
+import profileImage from '../assets/bharat.jpg'; // Replace with your image
 import cvFile from '../assets/cv.pdf'; // Replace with your CV file
 
 const About = () => {
   return (
     <section id="about" className="about-container">
-      <StarsBackground id="about-star-canvas" />
+      {/* <StarsBackground id="about-star-canvas" /> */}
       <div className="home-gradient-overlay"></div>
       <div className="about-content">
         <div className="about-text">

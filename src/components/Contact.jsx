@@ -53,8 +53,8 @@ const Contact = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-    if (formData.phone && !/^\d{3}\d{3}\d{4}$/.test(formData.phone)) {
-      newErrors.phone = 'Please use format: 1234567890';
+    if (formData.phone && !/^\d{3}-\d{3}-\d{4}$/.test(formData.phone)) {
+      newErrors.phone = 'Please use format: 123-456-7890';
     }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
     
@@ -66,35 +66,16 @@ const Contact = () => {
     e.preventDefault();
     if (!validateForm()) return;
     setIsSubmitting(true);
-    
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone || '');
-      formDataToSend.append('message', formData.message);
-      
-      if (formData.photo) {
-        formDataToSend.append('photo', formData.photo);
-      }
-  
-      const response = await fetch('http://localhost:3001/api/contact', {
-        method: 'POST',
-        body: formDataToSend,
-        // Don't set Content-Type header - the browser will do it automatically
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      console.log('Form submitted:', {
+        ...formData,
+        photo: formData.photo ? formData.photo.name : 'No file'
       });
-  
-      const responseData = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(responseData.error || 'Failed to submit form');
-      }
-  
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', phone: '', message: '', photo: null });
     } catch (error) {
       console.error('Submission error:', error);
-      alert(`Error: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -102,7 +83,6 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact">
-      <StarsBackground id="contact-star-canvas" />
       <div className="home-gradient-overlay"></div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -120,6 +100,7 @@ const Contact = () => {
           </div>
         ) : (
           <>
+          
             <h3 className="comments-title"> <span>Contact</span></h3>
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <div className="form-group">
@@ -137,7 +118,7 @@ const Contact = () => {
               <div className="form-group">
                 <label htmlFor="phone">Phone Number <span className="optional">(optional)</span></label>
                 <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="Enter your phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" className={errors.phone ? 'error' : ''} />
-                <small className="hint">Format: 1234567890</small>
+                <small className="hint">Format: +91 123456789</small>
                 {errors.phone && <span className="error-message">{errors.phone}</span>}
               </div>
               

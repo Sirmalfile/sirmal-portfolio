@@ -93,12 +93,12 @@ const Skills = () => {
       </div>
 
       {/* Stars Background */}
-      <StarsBackground id="skill-star-canvas" />
+      {/* <StarsBackground id="skill-star-canvas" /> */}
       <div className="home-gradient-overlay"></div>
       
       {/* Content Container */}
       <div className="skills-container">
-        <h1 className="skills-main-title"><span>My Skills</span></h1>
+        <h1 className="skills-main-title"><span>Skills</span></h1>
         
         {/* Circular Orbit Animation - Hidden on mobile */}
         {!isMobile && (
